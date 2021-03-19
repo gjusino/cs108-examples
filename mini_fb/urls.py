@@ -2,9 +2,8 @@
 # description: direct url requests to view functions
 
 from django.urls import path
-from .views import homePageView
+from .views import ShowAllProfilesView
 
 urlpatterns = [
-    path('', homePageView, name='home'),
-
+    path('', ShowAllProfilesView.as_view(), name="show_all_profiles"),
 ]

@@ -1,0 +1,26 @@
+<!--mini_fb/show_all_profiles.html-->
+<title>MiniFacebook</title>
+<h1>MiniFacebook</h1>
+<h2>Showing All Profiles</h2>
+
+<!--a loop to display the profiles-->
+<table style="width:50%">
+<tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>City</th>
+    <th>Email Address</th>
+    <th>Picture</th>
+</tr>
+<tr>
+    {% for profile in profiles %}
+    <tr>
+        <td>{{profile.first_name}}</td>
+        <td>{{profile.last_name}}</td>
+        <td>{{profile.city}}</td>
+        <td>{{profile.email_address}}</td>
+        <td><img src="{{profile.profile_image_url}}" style="max-width: 100;"></td>
+    </tr>
+    {% endfor %}
+</tr>
+</table>

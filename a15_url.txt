@@ -1,1 +1,1 @@
-https://glacial-wave-80739.herokuapp.com
+https://glacial-wave-80739.herokuapp.com/pages

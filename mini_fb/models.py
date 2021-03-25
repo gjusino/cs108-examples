@@ -14,5 +14,40 @@ class Profile(models.Model):
         
         
         return f'{self.first_name} {self.last_name}, {self.city}'
+
         
+     def get_friends(self):
+        """Return a query set of your friends"""
+        all_friends = self.friends.all()
+        return all_friends
+
+    def get_status_messages(self):
+        """Gets the statuses of each profile"""
+        status = StatusMessage.objects.filter(profile=self.pk)
+        return status 
+
+    def __str__(self):
+        """Return a string representation
+        of this object"""
+
+        return '%s,%s' %(self.last_name, self.first_name)
+
+    def get_absolute_url(self):
+        """ Return a URL to display the new profile """
+        return reverse("show_profile_page", kwargs={"pk":self.pk})
+
+
+class StatusMessage(models.Model):
+    """Model the data attributes of a Facebook
+    status message"""
+
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    message =models.TextField(blank=True)
+    profile = models.ForeignKey('Profile',on_delete=models.CASCADE)
+    image = models.ImageField(blank=True)
+
+    def __str__(self):
+        """Return a string representation
+        of this object"""
+        return '%s,%s' %(self.message, self.timestamp)
 

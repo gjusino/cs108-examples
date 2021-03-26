@@ -15,12 +15,6 @@ class Profile(models.Model):
         
         return f'{self.first_name} {self.last_name}, {self.city}'
 
-        
-     def get_friends(self):
-        """Return a query set of your friends"""
-        all_friends = self.friends.all()
-        return all_friends
-
     def get_status_messages(self):
         """Gets the statuses of each profile"""
         status = StatusMessage.objects.filter(profile=self.pk)

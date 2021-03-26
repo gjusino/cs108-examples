@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Profile
+from .models import StatusMessage
 
 class ShowAllProfilesView(ListView):
     '''Shows a listing of Profiles'''

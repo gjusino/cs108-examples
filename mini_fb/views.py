@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from .models import *
 from django.views.generic import ListView, DetailView
-from .models import Profile
-from .models import StatusMessage
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import CreateProfileForm
+from django.shortcuts import redirect
+from django.urls import reverse
 
 class ShowAllProfilesView(ListView):
     '''Shows a listing of Profiles'''
@@ -15,14 +17,11 @@ class ShowProfilePageView(DetailView):
     template_name= 'mini_fb/show_profile_page.html'
     context_object_name = 'profile'
 
-    def get_context_data(self, **kwargs):
-        '''Return the context data (a dictionary) to be used in the template.'''
 
-        # obtain the default context data (a dictionary) from the superclass; 
-        # this will include the Profile record for this page view
-        context = super(ShowProfilePageView, self).get_context_data(**kwargs)
-        # create a new CreateStatusMessageForm, and add it into the context dictionary
-        form = CreateStatusMessageForm()
-        context['create_status_form'] = form
-        # return this context dictionary
-        return context
+
+class CreateProfileView(CreateView):
+    """A view to Create a profile and 
+    save it to the database"""
+    form_class = CreateProfileForm
+
+    template_name = 'mini_fb/create_profile_form.html'

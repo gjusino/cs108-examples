@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 class Profile(models.Model):
     '''represents profile created by new user'''
@@ -9,11 +9,6 @@ class Profile(models.Model):
     email_address = models.TextField(blank=True)
     profile_image_url = models.URLField(blank=True)
 
-    def __str__(self):
-        '''return a string representation of this object.'''
-        
-        
-        return f'{self.first_name} {self.last_name}, {self.city}'
 
     def get_status_messages(self):
         """Gets the statuses of each profile"""
@@ -44,4 +39,3 @@ class StatusMessage(models.Model):
         """Return a string representation
         of this object"""
         return '%s,%s' %(self.message, self.timestamp)
-

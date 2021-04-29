@@ -1,0 +1,39 @@
+<!--this is the html in order to create a new hero-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h2 style='color:ghostwhite'>Register a new Astronaut</h2>
+
+<form method='POST'>
+    {% csrf_token %}
+
+    <table>
+        {% for field in form %}
+        <!-- takes every field in the form and shows the name of the field and the field so people can create a hero-->
+
+        <tr>
+            <th style='color:ghostwhite'>{{field.name}}</th>
+            <td style='color:ghostwhite' rows=2 cols= 40>{{field}}</td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+            <td></td>
+            <td>
+                <input type='submit' name='Register Astronaut' value="Register Astronaut!">
+            </td>
+
+        </tr>
+
+
+    </table>
+
+</form>
+
+
+
+
+
+{% endblock %}

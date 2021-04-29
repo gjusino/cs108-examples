@@ -1,0 +1,30 @@
+<!-- this is the html in order to update a hero-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h2 style='color:ghostwhite'>Update this Astronaut!</h2>
+
+<form method='POST'>
+    {% csrf_token %}
+
+    <table>
+        {% for field in form %} <!-- displays the field and the field names that can be updated by the hero-->
+
+        <tr>
+            <th style='color:ghostwhite'>{{field.name}}</th>
+            <td>{{field}}</td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+            <td></td>
+            <td>
+                <input type='submit' name='Update Astronaut' value="Update Astroanut!">
+            </td>
+
+        </tr>
+    </table>
+</form>
+{% endblock %}

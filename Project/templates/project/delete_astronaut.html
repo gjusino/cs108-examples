@@ -1,0 +1,26 @@
+<!-- this is the html in order to delete a hero-->
+
+<body background=https://wallpapercave.com/wp/wp2836672.png>
+
+    <h1 style='color:ghostwhite'>Are you sure you would like to delete 
+        this Astronaut?
+    </h1>
+    
+    <h2 style='color: ghostwhite;'>{{astronaut.astronaut_name}}</h2><br>
+    <img src="{{astronaut.image_url}}" style="max-width: 200;">
+    <p></p>
+    
+    <form method="POST">
+        <!-- deletes the hero-->
+        {% csrf_token %}
+       <input type='submit' name="yes" value='yes'>
+    </form>
+    
+    <form method="GET"action= "{% url 'astronaut_page' astronaut.pk %}">
+        <!-- does not delete the hero and takes u back to the hero page--> 
+        {% csrf_token %}
+       <input type='submit' name="no" value='no'>
+    </form>
+    
+    
+    </body>

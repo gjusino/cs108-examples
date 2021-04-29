@@ -1,0 +1,21 @@
+<!-- project/base.html-->
+
+<html>
+    <head>
+        <title>ARTEMIS Directory</title>
+    </head>
+    <body background=https://wallpapercave.com/wp/wp2836672.png>
+    <!--navigation links-->
+    <header style='color:ghostwhite'>
+        <a href="{% url 'all_astronauts' %}">All the Heroes</a> |
+        <a href="{% url 'crew' %}">All the Super Teams</a> |
+        <a href="{% url 'create_astronaut' %}">Register an Astronaut</a> |
+        <a href="{% url 'create_crew' %}">Register a Crew</a> |
+    </header>
+   
+    {% block content %}
+    {% endblock %}
+    
+
+    </body>
+</html>

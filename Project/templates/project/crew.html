@@ -1,0 +1,27 @@
+<!--this is the html for each team page-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+<center>
+
+<h1 style='color:ghostwhite'>{{crew.crew_name}}</h1><br>
+<img src="{{crew.crew_image}}" style="max-width: 200;">
+    
+<p></p>
+
+<h1 style='color:ghostwhite'>Astronauts included!</h1>
+{% for astronaut in crew.get_all_astronauts %} <!--shows all the heroes' image that are associated with the team-->
+<br><a href='{% url "astronaut_page" astronaut.pk %}'><img src="{{astronaut.image_url}}" style="max-width: 200;"></a>{% endfor %}
+
+<p></p>
+<p></p>
+
+
+
+<a href="{% url 'update_crew' crew.pk %}"><input type="button" value="Update this crew"></a>
+<br>
+<a href="{% url 'delete_crew' crew.pk %}"><input type="button" value="Delete this crew"></a>
+
+</center>
+{% endblock %}

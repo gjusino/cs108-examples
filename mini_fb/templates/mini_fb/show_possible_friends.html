@@ -1,0 +1,43 @@
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<html>
+    <table>
+        <p></p>
+        <header><a href="{% url 'show_profile_page' profile.pk %}">Back to {{profile.first_name}}'s profile page</a></header>
+
+        <colgroup>
+            <col span="1" style="width:200;">
+            <col span="1" style="width:100;">
+            <col span="1" style="width:400;">
+        </colgroup>
+    
+        <h1>{{profile.first_name}}'s Friends Suggestions</h1>
+        
+        <tr>
+            <th style="color:midnightblue;text-align:center;">Person</th>
+            <th style="color:midnightblue;text-align:center;">Profile Image</th>
+        </tr>
+        <!-- <h1 style="color:blue;text-align:center;">This is a heading</h1>  -->
+    
+        {% for sug in profile.get_friend_suggestions %}
+        <tr>
+            <td style="text-align:center;">{{sug.first_name}} {{sug.last_name}}</td>
+            <td style="text-align: center;"><img src='{{sug.profile_img}}' style='max-width: 100;'></td>
+            <td>
+                <form method="POST" enctype="multipart/form-data"
+                action="{% url 'add_friends' profile_pk=profile.pk friend_pk=sug.pk %}">
+                {% csrf_token %}
+                <input type='submit' value="Add Friend" name="Add Friend">
+            </td>
+        </tr>
+        
+        {% endfor %}
+        
+        
+    </table>
+
+</html>
+
+
+{% endblock %}

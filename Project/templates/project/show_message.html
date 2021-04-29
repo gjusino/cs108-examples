@@ -1,0 +1,43 @@
+<!-- shows the cries for help-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+<html>
+    <body background=https://wallpapercave.com/wp/wp2836672.png>
+    <table border= 1>
+    
+
+        <colgroup>
+            <col span="1" style="width:400;">
+            <col span="1" style="width:400;">
+            <col span="1" style="width:600;">
+            <col span="1" style="width:250;">
+            <col span="1" style="width:100;">
+        </colgroup>
+    
+        <h1 style="color:ghostwhite;text-align:center;">Messages</h1>
+        
+        <tr>
+            <th style="color:ghostwhite;text-align:center;">Message</th>
+            <th style="color:ghostwhite;text-align:center;">Location</th>
+            <th style="color:ghostwhite;text-align:center;">Astronaut</th>
+            <th style="color:ghostwhite;text-align:center;">Time Recieved</th>
+            <th style="color:ghostwhite;text-align:center;">Recieved</th>
+        </tr>
+        <!-- <h1 style="color:blue;text-align:center;">This is a heading</h1>  -->
+        
+        {% for message in astronaut.get_message %} <!-- takes all the cries for help and displays them
+        the most recent ones on top-->
+        <tr>
+            <td style="color:ghostwhite;text-align:center;">{{message.message}}</td>
+            <td style="color:ghostwhite;text-align:center;">{{message.location}}</td>
+            <td style='text-align: center;'><a href='{% url "astronaut_page" message.astronaut.pk %}'><img src="{{message.astronaut.image_url}}" style="max-width: 200;"></a></td>
+            <td style="color:ghostwhite;text-align:center;">{{messsage.timestamp}}</td>
+            <td><a href="{% url 'delete_sendmessage' astronaut_pk=astronaut.pk message_pk=message.pk %}"><input type="button" value="Recieved"></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</html>
+
+{% endblock %}

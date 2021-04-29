@@ -1,0 +1,32 @@
+<!--welcome page for director Nick Fury-->
+
+<html>
+    <center>
+    <body background=https://wallpapercave.com/wp/wp2836672.png>
+    . 
+    <p></p>
+    .
+    <p></p> 
+    <p></p>
+    .
+    <p></p>
+    <p></p> 
+    <p></p>
+    .
+    <p></p>
+    <p></p> 
+    <p></p>
+    <h1 style='color: ghostwhite; text-align: center;'>
+        Welcome, Administrator Bridenstine!
+    </h1>
+    <h2 style='color: ghostwhite; text-align: center;'>
+        Please select an option
+    </h2>
+    <table style='color: ghostwhite; text-align: center;'>
+        <a href="{% url 'all_astronauts' %}"><input type="button" value='All Astronauts'></a> |
+        <a href="{% url 'crew' %}"><input type="button" value='All Crews'></a> |
+        <a href="{% url 'create_astronaut' %}"><input type="button" value='Register a New Astronaut'></a> |
+        <a href="{% url 'create_crew' %}"><input type="button" value='Register a New Crew'></a> |
+    </table>
+    </center>
+</html>

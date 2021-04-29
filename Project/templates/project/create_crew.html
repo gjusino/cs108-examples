@@ -1,0 +1,31 @@
+<!-- this is the html in order to create a new team-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h2 style='color:ghostwhite'>Register a new Crew</h2>
+
+<form method='POST'>
+    {% csrf_token %}
+
+    <table>
+        {% for field in form %}
+        <!-- takes every field in the form and shows the name of the field and the field so people can create a team-->
+
+        <tr>
+            <th style='color:ghostwhite'>{{field.name}}</th>
+            <td>{{field}}</td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+            <td></td>
+            <td>
+                <input type='submit' name='Register Crew' value="Register Crew!">
+            </td>
+
+        </tr>
+    </table>
+</form>
+{% endblock %}

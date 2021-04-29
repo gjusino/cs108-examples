@@ -1,0 +1,65 @@
+<!--this is the html for each hero page-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<center>
+<h1 style='color:ghostwhite'>{{astronaut.astronaut_name}}</h1><br>
+<img src="{{astronaut.image_url}}" style="max-width: 200;">
+
+<p></p>
+<table>
+    <colgroup>
+        <col span="1" style="width:50%;">
+        <col span="1" style="width:50%;">
+    </colgroup>
+    <tr>
+        <td style='color:ghostwhite'>Name</td>
+        <td style='color:ghostwhite'>{{astronaut.name}}</td>
+    </tr>
+    <tr>
+        <td style='color:ghostwhite'>HomeTown</td>
+        <td style='color:ghostwhite'>{{astronaut.hometown}}</td>
+    </tr>
+</table>
+
+<h1 style='color:ghostwhite'>Crew </h1> <!-- shows team name and image the hero is associated with -->
+<h2 style='color:ghostwhite'><a href="{% url 'crew_page' astronaut.crew.pk %}"> {{astronaut.crew}}</a></h2><br>
+<a href="{% url 'crew_page' astronaut.crew.pk %}"><img src="{{astronaut.crew.crew_image}}" style="max-width: 200;"></a>
+
+<p></p>
+<p></p>
+<h1 style='color: ghostwhite;'><a href="{% url 'show_message' astronaut.pk %}">Messages</a></h1>
+<p></p>
+<p></p>
+
+<h1 style="color: ghostwhite;">Send Help</h1>
+<form method='POST' enctype="multipart/form-data" action="{% url 'post_message' astronaut.pk %}"> <!-- a form to request help-->
+    {% csrf_token %}
+    <table>
+        {% for field in create_sendmessage_form %} <!-- takes the field in cryforhelp form and displays it so hero can get some help-->
+        <tr>
+            <th style='color:ghostwhite'>{{field.name}}</th>
+            <th>{{field}}</th>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td>
+                <input type = 'submit' value='Send Message'>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<p></p>
+
+<a href="{% url 'update_astronaut' astronaut.pk %}"><input type="button" value="Update this astronaut"></a>
+<br>
+<a href="{% url 'delete_astronaut' astronaut.pk %}"><input type="button" value="Delete this astronaut"></a>
+
+</center>
+
+
+{% endblock %}

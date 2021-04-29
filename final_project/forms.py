@@ -1,6 +1,3 @@
-# This is my form page. This includes forms in order to create Heroes, Teams, and a cry for help 
-# we can also update heroes and teams. 
-
 from django import forms
 from .models import * 
 

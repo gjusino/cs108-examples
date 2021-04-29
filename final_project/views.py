@@ -1,6 +1,6 @@
-# This is the view page in order to see every hero and their page, every team and their page, every cry for help
-# update, create , or delete heroes, teams and cries for help
+from django.shortcuts import render
 
+# Create your views here.
 from django.shortcuts import render
 
 # Create your views here.

@@ -5,7 +5,7 @@ from .views import *
 
 urlpatterns = [
     path('',HomePageView.as_view(), name='home'),   # shows home page
-    path('astronauts',AstronautView.as_view(), name='all_astronauts'),   # shows all heroes
+    path('astronaut',AstronautView.as_view(), name='all_astronauts'),   # shows all heroes
     path('astronaut/<int:pk>', AstronautPageView.as_view(),name='astronaut_page'),   # a heros page
     path('crew/<int:pk>', CrewPageView.as_view(),name='crew_page'),   # shows a team page
 

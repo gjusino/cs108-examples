@@ -1,9 +1,7 @@
-# this has 3 models: Hero, Team, and CryforHelp
-# hero is an individual with super powers
-# team is a collection of heroes
-#  cry for help is a status update so heroes can receive help 
-
 from django.db import models
+
+# Create your models here.
+
 from django.urls import reverse
 
 # Create your models here.

@@ -5,10 +5,10 @@
 {% block content %}
 
 <center>
-<h1 style='color:ghostwhite'>{{astronaut.astronaut_name}}</h1><br>
+<h1 style='color:ghostwhite'>{{astronaut.name}}</h1><br>
 <img src="{{astronaut.image_url}}" style="max-width: 200;">
 
-<p></p>
+
 <table>
     <colgroup>
         <col span="1" style="width:50%;">
@@ -34,7 +34,7 @@
 <p></p>
 <p></p>
 
-<h1 style="color: ghostwhite;">Send Help</h1>
+<h1 style="color: ghostwhite;">Send Message</h1>
 <form method='POST' enctype="multipart/form-data" action="{% url 'post_message' astronaut.pk %}"> <!-- a form to request help-->
     {% csrf_token %}
     <table>

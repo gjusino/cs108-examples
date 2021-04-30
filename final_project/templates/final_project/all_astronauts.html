@@ -2,14 +2,16 @@
 {% extends 'final_project/base.html' %}
 
 {% block content %}
-<h1 style='color:ghostwhite'>Active Astronauts</h1>
+<h1 style='color:ghostwhite',text-align:center>Astronauts</h1>
 
 
 <ul>
     {% for astronaut in all_astronauts_list %}
     <!-- this is a loop that'll take every hero and display the hero name and the image of the hero-->
-    <h3><li style='color:ghostwhite'><a href='{% url "astronaut_page" astronaut.pk %}'>{{astronaut.astronaut_name}}</a><br>
-        <a href='{% url "astronaut_page" astronaut.pk %}'><img src="{{astronaut.image_url}}" style="max-width: 200;"></a>
+    <h3><li style='color:ghostwhite'><a>{{astronaut.name}}</a><br>
+        <a><img src="{{astronaut.image_url}}" style="max-width: 200;"></a><br>
+        <a> {{astronaut.hometown}}</a><br>
+        <a>{{astronaut.crew}}</a><br> 
     </li></h3>
     {% endfor %}
 

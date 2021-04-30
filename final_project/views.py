@@ -1,9 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import render
-
-# Create your views here.
 from .models import *
 from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -12,53 +9,53 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 class AstronautView(ListView):
-    """Create a subclass of Listview to display all heroes"""
+    """Create a subclass of Listview to display all astronauts"""
 
     model = Astronaut
-    template_name = 'project/all_astronauts.html'
+    template_name = 'final_project/all_astronauts.html'
     context_object_name = 'all_astronauts_list'
 
 
-class AstronautPageView(DetailView):
-    """Show us details for one hero"""
-    model = Astronaut
-    template_name = 'project/active_astronaut.html'
-    context_object_name = 'hero'
+# class AstronautPageView(DetailView):
+#     """Show us details for one astronaut"""
+#     model = Astronaut
+#     template_name = 'final_project/astronaut.html'
+#     context_object_name = 'hero'
 
-    def get_context_data(self, **kwargs):
-        '''Return the context data (a dictionary) to be used in the template.'''
+#     def get_context_data(self, **kwargs):
+#         '''Return the context data (a dictionary) to be used in the template.'''
 
-        # obtain the default context data (a dictionary) from the superclass; 
-        # this will include the hero record for this page view
-        context = super(AstronautPageView, self).get_context_data(**kwargs)
-        # create a new CreateCryforHelpForm, and add it into the context dictionary
-        form = CreateSendMessageForm()
-        context['create_send_message_form'] = form
-        # return this context dictionary
-        return context
+#         # obtain the default context data (a dictionary) from the superclass; 
+#         # this will include the hero record for this page view
+#         context = super(AstronautPageView, self).get_context_data(**kwargs)
+#         # create a new CreateCryforHelpForm, and add it into the context dictionary
+#         form = CreateSendMessageForm()
+#         context['create_send_message_form'] = form
+#         # return this context dictionary
+#         return context
 
 
 class CrewView(ListView):
-    """Show us list of teams"""
+    """Show us list of crews"""
 
     model = Crew
-    template_name= 'project/all_crews.html'
+    template_name= 'final_project/all_crews.html'
     context_object_name = 'all_crews_list'
 
 class CrewPageView(DetailView):
-    """Show us details of one team"""
+    """Show us details of one crew"""
 
     model = Crew
-    template_name = 'project/crew.html'
+    template_name = 'final_project/crew.html'
     context_object_name = 'crew'
 
 
 class CreateAstronautView(CreateView):
-    """A view to create a new hero and save
+    """A view to create a new astronaut and saves
     it to the database"""
 
     form_class = CreateAstronautForm
-    template_name = 'project/create_astronaut.html'
+    template_name = 'final_project/create_astronaut.html'
 
 
 class UpdateAstronautView(UpdateView):
@@ -66,7 +63,7 @@ class UpdateAstronautView(UpdateView):
     it to the database"""
 
     form_class = UpdateAstronautForm
-    template_name = 'project/update_astronaut.html'
+    template_name = 'final_project/update_astronaut.html'
     queryset = Astronaut.objects.all()
 
 
@@ -74,7 +71,7 @@ class CreateCrewView(CreateView):
     """A view to create a new super team"""
 
     form_class = CreateCrewForm
-    template_name= 'project/create_crew.html'
+    template_name= 'final_project/crew.html'
 
 
 class UpdateCrewView(UpdateView):
@@ -82,7 +79,7 @@ class UpdateCrewView(UpdateView):
     it to the database"""
 
     form_class = UpdateCrewForm
-    template_name = 'project/update_crew.html'
+    template_name = 'final_project/update_crew.html'
     queryset = Crew.objects.all()
 
 
@@ -90,7 +87,7 @@ class DeleteAstronautView(DeleteView):
     """A view to delete a hero and remove
     it from the database"""
 
-    template_name = 'project/delete_astronaut.html'
+    template_name = 'final_project/delete_astronaut.html'
     queryset = Astronaut.objects.all()
     success_url = '../../'
 
@@ -98,7 +95,7 @@ class DeleteCrewView(DeleteView):
     """A view to delete a team and remove
     it from the database"""
 
-    template_name = 'project/delete_crew.html'
+    template_name = 'final_project/delete_crew.html'
     queryset = Crew.objects.all()
     success_url = '../../crews'
 
@@ -132,7 +129,7 @@ def create_sendmessage(request, pk):
 
 class ShowMessagesViews(DetailView):
     """Shows the cries for help for every hero"""
-    template_name = 'project/show_messages.html'
+    template_name = 'final_project/show_messages.html'
     model = Astronaut
     context_object_name = 'astronaut'
 
@@ -141,12 +138,12 @@ class HomePageView(TemplateView):
     """A specialized version of templateview
     to display our home page"""
 
-    template_name = 'project/home.html'
+    template_name = 'final_project/home.html'
 
 
 class DeleteSendMessageView(DeleteView):
     """A view to resolve cries for help"""
-    template_name = 'project/delete_messages.html'
+    template_name = 'final_project/delete_messages.html'
     queryset= SendMessage.objects.all()
     
     def get_context_data(self,**kwargs):

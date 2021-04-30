@@ -20,7 +20,8 @@ class Astronaut(models.Model):
 
     def get_absolute_url(self):
         """Return a URL to display Hero"""
-        return reverse("astronaut_page", kwargs={"pk":self.pk})
+        return reverse("all_astronauts")
+        #kwargs={"pk":self.pk})
     
     def get_message(self):
         """Gets the cries for help of all heroes"""
@@ -38,7 +39,8 @@ class Crew(models.Model):
 
     def get_absolute_url(self):
         """Return a URL to display team"""
-        return reverse('crew_page', kwargs={"pk":self.pk})
+        return reverse('crew'), 
+        #kwargs={"pk":self.pk})
 
     def get_all_heros(self):
         """Return all heroes"""

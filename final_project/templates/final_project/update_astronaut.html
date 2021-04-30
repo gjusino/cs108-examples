@@ -1,4 +1,4 @@
-<!-- this is the html in order to update a hero-->
+<!-- this is the html in order to update an astronaut-->
 
 {% extends 'final_project/base.html' %}
 
@@ -10,7 +10,7 @@
     {% csrf_token %}
 
     <table>
-        {% for field in form %} <!-- displays the field and the field names that can be updated by the hero-->
+        {% for field in form %} <!-- displays the field and the field names that can be updated by the Astronaut-->
 
         <tr>
             <th style='color:ghostwhite'>{{field.name}}</th>

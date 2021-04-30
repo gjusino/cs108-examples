@@ -1,4 +1,4 @@
-<!--this is the html for each hero page-->
+<!--this is the html for each astronaut page-->
 
 {% extends 'final_project/base.html' %}
 
@@ -24,7 +24,7 @@
     </tr>
 </table>
 
-<h1 style='color:ghostwhite'>Crew </h1> <!-- shows team name and image the hero is associated with -->
+<h1 style='color:ghostwhite'>Crew </h1> <!-- shows crew name and image the astronaut is associated with -->
 <h2 style='color:ghostwhite'><a href="{% url 'crew_page' astronaut.crew.pk %}"> {{astronaut.crew}}</a></h2><br>
 <a href="{% url 'crew_page' astronaut.crew.pk %}"><img src="{{astronaut.crew.crew_image}}" style="max-width: 200;"></a>
 
@@ -35,10 +35,10 @@
 <p></p>
 
 <h1 style="color: ghostwhite;">Send Message</h1>
-<form method='POST' enctype="multipart/form-data" action="{% url 'post_message' astronaut.pk %}"> <!-- a form to request help-->
+<form method='POST' enctype="multipart/form-data" action="{% url 'post_message' astronaut.pk %}"> <!-- a form to send a message-->
     {% csrf_token %}
     <table>
-        {% for field in create_sendmessage_form %} <!-- takes the field in cryforhelp form and displays it so hero can get some help-->
+        {% for field in create_sendmessage_form %} <!-- takes the field in send message form and displays it so astronauts can recieve them-->
         <tr>
             <th style='color:ghostwhite'>{{field.name}}</th>
             <th>{{field}}</th>

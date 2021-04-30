@@ -39,10 +39,9 @@ class Crew(models.Model):
 
     def get_absolute_url(self):
         """Return a URL to display team"""
-        return reverse('crew'), 
-        #kwargs={"pk":self.pk})
+        return reverse('crew',kwargs ={"pk":self.pk})
 
-    def get_all_heros(self):
+    def get_all_astronauts(self):
         """Return all heroes"""
         astro = Astronaut.objects.filter(team=self.pk)
         return astro
@@ -59,3 +58,4 @@ class SendMessage(models.Model):
         """Return a string representation
         of this object"""
         return '%s,%s' %(self.message, self.timestamp)
+        

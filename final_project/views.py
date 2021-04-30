@@ -20,7 +20,7 @@ class AstronautView(ListView):
 #     """Show us details for one astronaut"""
 #     model = Astronaut
 #     template_name = 'final_project/astronaut.html'
-#     context_object_name = 'hero'
+#     context_object_name = 'astronaut'
 
 #     def get_context_data(self, **kwargs):
 #         '''Return the context data (a dictionary) to be used in the template.'''
@@ -59,7 +59,7 @@ class CreateAstronautView(CreateView):
 
 
 class UpdateAstronautView(UpdateView):
-    """A view to update a hero and save
+    """A view to update an astronaut and save
     it to the database"""
 
     form_class = UpdateAstronautForm
@@ -68,14 +68,14 @@ class UpdateAstronautView(UpdateView):
 
 
 class CreateCrewView(CreateView):
-    """A view to create a new super team"""
+    """A view to create a new crew"""
 
     form_class = CreateCrewForm
     template_name= 'final_project/crew.html'
 
 
 class UpdateCrewView(UpdateView):
-    """A view to update a team and save
+    """A view to update a crew and save
     it to the database"""
 
     form_class = UpdateCrewForm
@@ -84,7 +84,7 @@ class UpdateCrewView(UpdateView):
 
 
 class DeleteAstronautView(DeleteView):
-    """A view to delete a hero and remove
+    """A view to delete an astronaut and remove
     it from the database"""
 
     template_name = 'final_project/delete_astronaut.html'
@@ -92,7 +92,7 @@ class DeleteAstronautView(DeleteView):
     success_url = '../../'
 
 class DeleteCrewView(DeleteView):
-    """A view to delete a team and remove
+    """A view to delete a crew and remove
     it from the database"""
 
     template_name = 'final_project/delete_crew.html'
@@ -102,7 +102,7 @@ class DeleteCrewView(DeleteView):
 
 def create_sendmessage(request, pk):
     '''
-    Process a form submission to post a cry for help.
+    Process a form submission to post a message.
     '''
     # find the hero that matches the `pk` in the URL
     astro = Astronaut.objects.get(pk=pk)
@@ -120,7 +120,7 @@ def create_sendmessage(request, pk):
             sm.astro = astro
             sm.save()
         else:
-            print("Error: This form is not valid my guy")
+            print("Error: This form is not valid")
 
 
     # redirect the user to the hero_page view

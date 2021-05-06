@@ -16,23 +16,23 @@ class AstronautView(ListView):
     context_object_name = 'all_astronauts_list'
 
 
-# class AstronautPageView(DetailView):
-#     """Show us details for one astronaut"""
-#     model = Astronaut
-#     template_name = 'final_project/astronaut.html'
-#     context_object_name = 'astronaut'
+class AstronautPageView(DetailView):
+    """Show us details for one astronaut"""
+    model = Astronaut
+    template_name = 'final_project/astronaut.html'
+    context_object_name = 'astronaut'
 
-#     def get_context_data(self, **kwargs):
-#         '''Return the context data (a dictionary) to be used in the template.'''
+    def get_context_data(self, **kwargs):
+        '''Return the context data (a dictionary) to be used in the template.'''
 
-#         # obtain the default context data (a dictionary) from the superclass; 
-#         # this will include the hero record for this page view
-#         context = super(AstronautPageView, self).get_context_data(**kwargs)
-#         # create a new CreateCryforHelpForm, and add it into the context dictionary
-#         form = CreateSendMessageForm()
-#         context['create_send_message_form'] = form
-#         # return this context dictionary
-#         return context
+        # obtain the default context data (a dictionary) from the superclass; 
+        # this will include the astronaut record for this page view
+        context = super(AstronautPageView, self).get_context_data(**kwargs)
+        # create a new CreateSendMessageForm, and add it into the context dictionary
+        form = CreateSendMessageForm()
+        context['create_send_message_form'] = form
+        # return this context dictionary
+        return context
 
 
 class CrewView(ListView):
@@ -71,7 +71,7 @@ class CreateCrewView(CreateView):
     """A view to create a new crew"""
 
     form_class = CreateCrewForm
-    template_name= 'final_project/crew.html'
+    template_name= 'final_project/create_crew.html'
 
 
 class UpdateCrewView(UpdateView):
@@ -89,7 +89,7 @@ class DeleteAstronautView(DeleteView):
 
     template_name = 'final_project/delete_astronaut.html'
     queryset = Astronaut.objects.all()
-    success_url = '../../'
+    success_url = '../../astronaut'
 
 class DeleteCrewView(DeleteView):
     """A view to delete a crew and remove
@@ -104,7 +104,7 @@ def create_sendmessage(request, pk):
     '''
     Process a form submission to post a message.
     '''
-    # find the hero that matches the `pk` in the URL
+    # find the astronaut that matches the `pk` in the URL
     astro = Astronaut.objects.get(pk=pk)
     form = CreateSendMessageForm(request.POST or None, request.FILES or None)
 
@@ -114,22 +114,22 @@ def create_sendmessage(request, pk):
         # read the data from this form submission
         message = request.POST['message']
 
-        # save the new cry for help object to the database
+        # save the new message object to the database
         if form.is_valid():
-            sm = form.save(commit=False)
-            sm.astro = astro
-            sm.save()
+            formMessage = form.save(commit=False)
+            formMessage.astronaut = astro
+            formMessage.save()
         else:
             print("Error: This form is not valid")
 
 
-    # redirect the user to the hero_page view
+    # redirect the user to the astronaut_page view
     return redirect(reverse('astronaut_page', kwargs={'pk': pk}))
 
 
 class ShowMessagesViews(DetailView):
-    """Shows the cries for help for every hero"""
-    template_name = 'final_project/show_messages.html'
+    """Shows the messages for every astronaut"""
+    template_name = 'final_project/show_message.html'
     model = Astronaut
     context_object_name = 'astronaut'
 
@@ -142,8 +142,8 @@ class HomePageView(TemplateView):
 
 
 class DeleteSendMessageView(DeleteView):
-    """A view to resolve cries for help"""
-    template_name = 'final_project/delete_messages.html'
+    """A view to resolve recieved messages"""
+    template_name = 'final_project/delete_message.html'
     queryset= SendMessage.objects.all()
     
     def get_context_data(self,**kwargs):
@@ -152,17 +152,17 @@ class DeleteSendMessageView(DeleteView):
         # by calling the super class version
         # of get_context_data and save it as context
         context = super(DeleteSendMessageView, self).get_context_data(**kwargs)
-        st_cfh = SendMessage.objects.get(pk=self.kwargs['message_pk'])
-        context['st_cfh']=st_cfh
+        st_sm = SendMessage.objects.get(pk=self.kwargs['message_pk'])
+        context['st_sm']=st_sm
         return context
 
     def get_object(self):
-        """Return the cry for help that should be deleted"""
+        """Return the message that should be deleted"""
         # read the URL data values into variables
         astronaut_pk = self.kwargs['astronaut_pk']
         message_pk = self.kwargs['message_pk']
 
-        # find the CryforHelp object, and return it
+        # find the SendMessage object, and return it
         st_cfh = SendMessage.objects.get(pk=message_pk)
         return st_cfh
 
@@ -170,5 +170,5 @@ class DeleteSendMessageView(DeleteView):
         """Returns the url to which to redirect the user"""
         astronaut_pk = self.kwargs['astronaut_pk']
         message_pk = self.kwargs['message_pk']
-        k = reverse('astronaut_page',kwargs={"pk":astronaut_pk})
+        k = reverse('show_message',kwargs={"pk":astronaut_pk})
         return k

@@ -8,10 +8,10 @@
 
 
 <ul>
-    {% for team in all_teams_list %}
+    {% for crew in all_crews_list %}
     <!-- this is a loop that'll take every crew and display the crew name and the crew patch-->
-    <h3><li style='color:ghostwhite'>{{crew.crew_name}}</a><br>
-        <a><img src="{{crew.crew_image}}" style="max-width: 200;"></a>
+    <h3><li style='color:ghostwhite'><a href='{% url "crew_page" crew.pk %}'>{{crew.crew_name}}</a><br>
+        <a href='{% url "crew_page" crew.pk %}'><img src="{{crew.crew_image}}" style="max-width: 200;"></a>
     </li></h3>
     {% endfor %}
 

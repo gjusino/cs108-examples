@@ -38,7 +38,7 @@
 <form method='POST' enctype="multipart/form-data" action="{% url 'post_message' astronaut.pk %}"> <!-- a form to send a message-->
     {% csrf_token %}
     <table>
-        {% for field in create_sendmessage_form %} <!-- takes the field in send message form and displays it so astronauts can recieve them-->
+        {% for field in create_send_message_form %} <!-- takes the field in send message form and displays it so astronauts can recieve them-->
         <tr>
             <th style='color:ghostwhite'>{{field.name}}</th>
             <th>{{field}}</th>

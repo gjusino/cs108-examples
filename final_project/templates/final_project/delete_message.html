@@ -2,9 +2,9 @@
 
 <body background=https://www.nasa.gov/specials/artemis-accords/img/artemis-accords.jpg></body>
 
-<h3 style='color:ghostwhite;'>Has this message been recieved??</h3>
+<h3 style='color:ghostwhite;'>Has this message been received?</h3>
 
-<h4 style='color:ghostwhite;'>{{st_cfh}}</h4>
+<h4 style='color:ghostwhite;'>{{st_sm}}</h4>
 
 <p>
 
@@ -16,7 +16,7 @@
     <input type='submit' name='yes' value='yes'>
 </form>
 
-<form method='GET' action="{% url 'show_messages' st_cfh.astronaut.pk %}">
+<form method='GET' action="{% url 'show_message' st_sm.astronaut.pk %}">
     <!--does not delete and redirects back to the messages page-->
     {% csrf_token %}
     <input type='submit' name='no' value='no'>

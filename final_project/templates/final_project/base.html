@@ -4,13 +4,14 @@
     <head>
         <title>ARTEMIS Directory</title>
     </head>
-    <body background=https://www.nasa.gov/specials/artemis-accords/img/artemis-accords.jpg>
+    <body background=http://inspirationfeed.com/wp-content/uploads/2019/03/felix-mittermeier-700255-unsplash-800x450.jpg>
     <!--navigation links-->
     <header style='color:ghostwhite'>
         <a href="{% url 'all_astronauts' %}">All the Astronauts</a> |
-       
+        <a href="{% url 'crew' %}">All Crews'</a> |
         <a href="{% url 'create_astronaut' %}">Register an Astronaut</a> |
-       
+        <a href="{% url 'create_crew' %}">Register a New Crew'</a> |
+        <a href="{% url 'show_message' pk=1 %}">All Messages'</a> |
     </header>
    
     {% block content %}

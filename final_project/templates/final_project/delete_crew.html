@@ -1,6 +1,6 @@
 <!--this is the html in order to delete a crew-->
 
-<body background=https://wallpapercave.com/wp/wp2836672.png>
+<body background=https://www.nasa.gov/specials/artemis-accords/img/artemis-accords.jpg>
 
     <h1 style='color:ghostwhite'>Are you sure you would like to delete 
         this Crew?
@@ -12,13 +12,13 @@
     <p></p>
     
     <form method="POST">
-        <!-- deletes the team-->
+        <!-- deletes the crew-->
         {% csrf_token %}
        <input type='submit' name="yes" value='yes'>
     </form>
     
     <form method="GET"action= "{% url 'crew_page' crew.pk %}"> 
-        <!-- does not delete team and takes u back to team page-->
+        <!-- does not delete crew and takes u back to crew page-->
         {% csrf_token %}
        <input type='submit' name="no" value='no'>
     </form>

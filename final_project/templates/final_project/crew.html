@@ -11,8 +11,10 @@
 <p></p>
 
 <h1 style='color:ghostwhite'>Astronauts included!</h1>
-{% for astronaut in crew.get_all_crews %} <!--shows all the astronauts' image that are associated with the crew-->
-<br><a href='{% url "all_crews" %}'><img src="{{astronaut.image_url}}" style="max-width: 200;"></a>{% endfor %}
+{% for astronaut in crew.get_all_astronauts %} <!--shows all the astronauts' image that are associated with the crew-->
+<br><a href='{% url "astronaut_page" astronaut.pk %}'><img src="{{astronaut.image_url}}" style="max-width: 200;"></a>
+<a href='{% url "astronaut_page" astronaut.pk %}'><h2 style='color:ghostwhite'>{{astronaut.name}}</h2></a>
+{% endfor %}
 
 <p></p>
 <p></p>

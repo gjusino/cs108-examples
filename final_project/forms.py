@@ -42,4 +42,4 @@ class CreateSendMessageForm(forms.ModelForm):
     class Meta:
         """Associate this to SendMessage"""
         model = SendMessage
-        fields = ['message','location']
+        fields = ['message']
